@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1045807950988",
+    "project_id": "pigeontrackerood",
+    "storage_bucket": "pigeontrackerood.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045807950988:android:e8cc3d9ed7a63de5919fa9",
+        "android_client_info": {
+          "package_name": "com.syrpro.pigeontracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1045807950988-gbd1qt249e92hgi8fvu7bma34tnph875.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAT-lCYZaUhEkcDLYqCrPIPV9bIf6BsjqY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1045807950988-gbd1qt249e92hgi8fvu7bma34tnph875.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

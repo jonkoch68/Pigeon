@@ -57,7 +57,7 @@ public class TrackableAdapter extends RecyclerView.Adapter<TrackableAdapter.Trac
     class TrackableHolder extends  RecyclerView.ViewHolder{
 
         boolean isPackage;
-        ImageButton favoriteToggleButton;
+        ImageButton favoriteToggleButton, editButton;
         TextView trackableTitle;
         boolean isFavorite;
         String docName;
@@ -67,6 +67,7 @@ public class TrackableAdapter extends RecyclerView.Adapter<TrackableAdapter.Trac
             super(itemView);
             favoriteToggleButton = itemView.findViewById(R.id.trackableFavoriteButton);
             trackableTitle = itemView.findViewById(R.id.trackableHolderTextView);
+            editButton = itemView.findViewById(R.id.trackableEditButton);
             favoriteToggleButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -92,6 +93,14 @@ public class TrackableAdapter extends RecyclerView.Adapter<TrackableAdapter.Trac
                     else{
                         //
                     }
+                }
+            });
+            editButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(TrackableAdapter.this.context, PackageCreatorActivity.class);
+                    i.putExtra(DOC,docName);
+                    context.startActivity(i);
                 }
             });
             //OnLongClickToEdit

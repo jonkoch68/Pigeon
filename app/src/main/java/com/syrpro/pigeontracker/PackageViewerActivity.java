@@ -33,6 +33,7 @@ public class PackageViewerActivity extends AppCompatActivity {
         status = findViewById(R.id.packageViewerStatus);
         historyView = findViewById(R.id.packageViewShippingHistory);
 
+
         Task<DocumentSnapshot> doc = FirebaseFirestore.getInstance().document(getIntent().getCharSequenceExtra(TrackableAdapter.DOC).toString()).get();
         while(!doc.isComplete()){}
         title.setText(doc.getResult().get("Nickname").toString());
@@ -43,10 +44,17 @@ public class PackageViewerActivity extends AppCompatActivity {
         Task<DocumentSnapshot> tracker = FirebaseFirestore.getInstance().collection("TrackingID").document(tID).get();
         while(!tracker.isComplete()){}
         System.out.println(tracker.getResult());
-        status.setText(tracker.getResult().get("Status").toString());
-        String[] hist = tracker.getResult().get("History").toString().split("Event No");
-        history = Arrays.asList(hist);
-        Collections.reverse(history);
+        if(tracker.getResult().get("Status") != null){
+            status.setText(tracker.getResult().get("Status").toString());
+        }
+        if(tracker.getResult().get("History") != null) {
+            String[] hist = tracker.getResult().get("History").toString().split("Event No");
+            history = Arrays.asList(hist);
+            Collections.reverse(history);
+        }else {
+            history = new ArrayList<>();
+        }
+
         PackageHistoryAdapter adapter = new PackageHistoryAdapter(history,PackageViewerActivity.this);
         historyView.setLayoutManager(new LinearLayoutManager(PackageViewerActivity.this,RecyclerView.VERTICAL,false));
         historyView.setAdapter(adapter);
